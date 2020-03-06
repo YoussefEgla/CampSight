@@ -1,0 +1,56 @@
+<%- include('./partials/head') %>
+<%- include("./partials/navbar") %>
+
+
+
+<div class="container my-5" style="max-width: 650px;">
+    <h1 class="text-center">Add new Campsight</h1>
+    <form action="/camps" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="location">How can we get there?</label>
+                <input type="text" class="form-control" id="location" placeholder="1234 Main St" name="location"
+                    required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="description">Tell us about your experience</label>
+                <textarea class="form-control" id="description" name="description"
+                    placeholder="I went to this place and it was... " rows="15" required></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="image">Image Url</label>
+                <input type="text" class="form-control" name="image" id="image" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="state">State</label>
+                <select id="state" class="form-control" name="state">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control" id="zip" name="zip">
+            </div>
+        </div>
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Campsight</button>
+    </form>
+</div>
+
+<%- include('./partials/footer') %>
