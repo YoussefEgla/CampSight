@@ -25,12 +25,26 @@ server.use(
   express.json(),
   cookieParser(),
   express.urlencoded({ extended: true }),
-  express.static(path.join(__dirname, 'public'))
+
 );
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'ejs');
+
+
+/**
+ * Public Directories
+ */
+// Main Public directory
+server.use(express.static(path.join(__dirname, 'public')));
+// bootstrap
+server.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+server.use('/js/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+// jQuery
+server.use('/js/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+// popper.js
+server.use('/js/popper', express.static(__dirname + '/node_modules/popper.js/dist/'));
 
 
 /**
