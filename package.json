@@ -1,0 +1,30 @@
+{
+  "name": "campsight",
+  "description": "Camping Social Media",
+  "keywords": [
+    "Camping",
+    "Social Media",
+    "Nodejs"
+  ],
+  "version": "0.1.0",
+  "private": true,
+  "author": "Youssef AbouEgla",
+  "scripts": {
+    "run:dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "UNLICENSED"
+}
