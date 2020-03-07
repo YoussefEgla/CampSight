@@ -14,12 +14,20 @@ const campSchema = new Schema({
         type: String,
         required: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     location: String,
     description: String,
     image: String,
     city: String,
     state: String,
-    zip: Number
+    zip: Number,
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 
