@@ -9,8 +9,11 @@ const
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
-  express = require('express');
-
+  express = require('express'),
+  session = require('express-session'),
+  passport = require('passport'),
+  LocalStrategy = require('passport-local'),
+  User = require('./models/User');
 
 /**
  * Server Instance
@@ -35,6 +38,21 @@ server.use(
   cookieParser(),
   bodyParser.urlencoded({ extended: true })
 );
+
+/**
+ * Authentication Configuration
+ */
+server.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+server.use(passport.initialize());
+server.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
