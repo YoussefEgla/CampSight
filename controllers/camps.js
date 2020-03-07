@@ -1,7 +1,7 @@
 /**
  * Required Modules
  */
-const Camp = require('../models/camp');
+const Camp = require('../models/Camp');
 
 
 async function getAllCamps(req, res) {
@@ -30,15 +30,20 @@ async function addNewCamp(req, res) {
     }
 }
 
-async function findCamp(req, res) {
+async function findOneCamp(req, res) {
     try {
         // find camp with id
-        const camp = await Camp.findById(req.params.id);
-        // render show template
-        res.render('showOneCamp', { camp })
+        await Camp.findById(req.params.id
+        ).populate('comments'
+        ).exec(
+        ).then(camp => {
+            res.render('showOneCamp', { camp });
+        }
+        ).catch(err => { throw err })
+
     } catch (err) {
         console.log(err);
     }
 }
 
-module.exports = { getAllCamps, addNewCamp, findCamp }
+module.exports = { getAllCamps, addNewCamp, findOneCamp }

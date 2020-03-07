@@ -3,7 +3,14 @@
 <!-- Navbar-->
 <%# Navigation Bar %>
 <%- include("./partials/navbar") %>
-<div><%= camp.title %></div>
+<div class="container">
+    <h1><%= camp.title %></h1>
+    <img src="<%= camp.image %>" <% for(let comment of camp.comments) { %> <div>
+    <p><%= comment.author %> </p>
+    <p><%= comment.text %> </p>
+</div>
+<%}%>
+</div>
 <!-- Footer & Scripts-->
 <%# Footer %>
 <%- include("./partials/footer.ejs") %>
