@@ -8,18 +8,14 @@ const
 /**
  * Controllers
  */
-const { addNewCamp } = require('../controllers/camps');
+const { getAllCamps, addNewCamp } = require('../controllers/camps');
 
 /**
 * Routes
 */
 router.route('/')
-    .get((req, res) => {
-        res.render('camps')
-    })
-    .post(addNewCamp, (req, res) => {
-        res.redirect('/camps');
-    })
+    .get(getAllCamps)
+    .post(addNewCamp)
 
 router.route('/new')
     .get((req, res) => {
