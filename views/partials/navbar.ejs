@@ -15,12 +15,72 @@
           <a class="nav-link" href="/camps/new">Post Yours</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-          Search
-        </button>
+      <form method="POST" action="/camps/lalala" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for camps in..." aria-label="Search" />
       </form>
+      <ul class="navbar-nav">
+        <% if(loggedInUser) { %>
+        <li class=" nav-link">
+          Hi, <span class="text-capitalize"><%= loggedInUser.username %></span>
+        </li>
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+        <% } else { %>
+        <!-- Login Modal -->
+        <li class="nav-item">
+          <!-- Button trigger modal -->
+          <a href="/login" class="nav-link" data-toggle="modal" data-target="#loginForm">Login</a>
+          <!-- Modal -->
+          <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="display-4 text-center" id="exampleModalCenterTitle">Login</h5>
+                  <div class="ml-auto align-self-center">
+
+                  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <form action="/login" method="POST" class="col-md-8 col-sm-10">
+                      <div class="form-group">
+                        <input type="text" name="username" id="username" placeholder="username" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" name="password" id="password" placeholder="password"
+                          class="form-control">
+                      </div>
+                      <input type="submit" value="continue" class="btn btn-primary btn-block">
+                    </form>
+                    <div class="col-md-4 col-sm-2">
+                      <h6>continue with</h6>
+                      <div class=" d-flex flex-wrap">
+                        <a href="#"><i class="fab fa-google m-2 display-4 text-muted"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square m-2 display-4 text-muted"></i></a>
+                        <a href="#"><i class="fab fa-twitter m-2 display-4 text-muted"></i></a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Register Form Modal -->
+        <li class="nav-item">
+          <a href="/register" class="nav-link">Register</a>
+        </li>
+        <% } %>
+
+      </ul>
     </div>
+
   </div>
 </nav>

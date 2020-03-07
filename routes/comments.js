@@ -8,13 +8,15 @@ const
 /**
  * Controllers
  */
-const { addNewComment } = require('../controllers/comments');
+const
+    { addNewComment } = require('../controllers/comments'),
+    { usersOnly } = require('../controllers/auth');
 
 /**
 * Routes
 */
 router.route('/')
-    .post(addNewComment, (req, res) => res.send('You have posted a new comment'));
+    .post(usersOnly, addNewComment);
 
 // this route will be removed and form will be embedded on camp page
 router.route('/new')

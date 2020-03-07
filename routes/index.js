@@ -4,6 +4,7 @@
 const
   express = require('express'),
   router = express.Router(),
+  passport = require('passport'),
   { registerUser } = require('../controllers/auth');
 
 /**
@@ -23,4 +24,15 @@ router.route('/register')
     res.send('Signing up')
   })
 
+router.route('/login')
+  .post(passport.authenticate('local', {
+    successRedirect: '/camps',
+    failureRedirect: '/'
+  }))
+
+router.route('/logout')
+  .get((req, res) => {
+    req.logout();
+    res.redirect('/');
+  })
 module.exports = router;

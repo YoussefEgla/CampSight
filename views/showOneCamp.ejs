@@ -86,6 +86,7 @@
 <section class="container">
     <div class="row mb-3">
         <div class="col-md-9 ml-auto">
+            <% if(loggedInUser) { %>
             <form action="/camps/<%= camp._id %>/comment" method="POST">
                 <div class="form-group">
                     <label for="text">Add Review</label>
@@ -95,6 +96,9 @@
                     </div>
                 </div>
             </form>
+            <% } else { %>
+            <p>Login To make a review</p>
+            <% } %>
         </div>
     </div>
     <div class="row">

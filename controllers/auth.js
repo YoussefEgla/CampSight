@@ -20,4 +20,11 @@ async function registerUser(req, res, next) {
         })
 }
 
-module.exports = { registerUser }
+async function usersOnly(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/')
+}
+
+module.exports = { registerUser, usersOnly }

@@ -53,6 +53,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+/**
+ * Auth specific Middleware
+ */
+const { isLoggedIn } = require('./middleware/auth')
+server.use(isLoggedIn);
+
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
