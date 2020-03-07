@@ -52,7 +52,7 @@ server.use('/js/bootstrap', express.static(__dirname + '/node_modules/bootstrap/
 // jQuery
 server.use('/js/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 // popper.js
-server.use('/js/popper', express.static(__dirname + '/node_modules/popper.js/dist/'));
+server.use('/js/popper', express.static(__dirname + '/node_modules/@popperjs/core/dist/umd'));
 
 
 /**

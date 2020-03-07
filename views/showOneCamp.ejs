@@ -3,21 +3,116 @@
 <!-- Navbar-->
 <%# Navigation Bar %>
 <%- include("./partials/navbar") %>
-<div class="container">
-    <h1><%= camp.title %></h1>
-    <img src="<%= camp.image %>" />
-    <form action="/camps/<%= camp._id %>/comment" method="POST">
-        <input type="text" name="comment[text]">
-        <input type="text" name="comment[author]">
-        <input type="submit" value="Add new Comment">
-    </form>
-    <% for(let comment of camp.comments) { %>
-    <div>
-        <p><%= comment.author %> </p>
-        <p><%= comment.text %> </p>
+
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Services
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Offers
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Find on Google Maps
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                            nesciunt laborum eiusmod.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="mb-5">
+                <img src="<%= camp.image %>" class="rounded-top" style="width: 100%;" />
+                <div class="bg-light py-3 px-3 rounded-bottom">
+                    <h1 class="display-4 text-dark"><%= camp.title %></h1>
+                    <p class="text-dark ">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                        accusamus terry richardson ad
+                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                        nesciunt laborum eiusmod.</p>
+                    <div class="d-flex justify-content-between">
+                        <p>Total Ratings</p>
+                        <p class="font-weight-bold">Price $79 / person</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <%}%>
-</div>
+
+
+</section>
+<section class="container">
+    <div class="row mb-3">
+        <div class="col-md-9 ml-auto">
+            <form action="/camps/<%= camp._id %>/comment" method="POST">
+                <div class="form-group">
+                    <label for="text">Add Review</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control col-8 mr-auto" name="comment[text]" id="text">
+                        <button type="submit" class="btn btn-primary form-control col-3">Add review</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 ml-auto">
+            <ul class="list-group list-group-flush">
+                <% for(let comment of camp.comments) { %>
+                <li class="list-group-item d-flex align-items-start justify-content-between">
+                    <p><%= comment.text %> </p>
+                    <p class="font-weight-bold"><%= comment.author %></p>
+                </li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
 <!-- Footer & Scripts-->
 <%# Footer %>
-    <%- include("./partials/footer.ejs") %>
+                <%- include("./partials/footer.ejs") %>
