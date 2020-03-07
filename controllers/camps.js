@@ -9,7 +9,7 @@ async function getAllCamps(req, res) {
         // fetch All camps from database
         const camps = await Camp.find({});
         // render template
-        res.render('camps', { camps });
+        res.render('showAllCamps', { camps });
 
     } catch (err) {
         console.log(err);
@@ -21,7 +21,7 @@ async function addNewCamp(req, res) {
         // destruct values from body object
         const { title, location, description, image, city, state, zip } = req.body;
         // Add Camp to database
-        Camp.create({ title, location, description, image, city, state, zip });
+        await Camp.create({ title, location, description, image, city, state, zip });
         // redirect to /camps
         res.redirect('/camps');
 
@@ -30,4 +30,15 @@ async function addNewCamp(req, res) {
     }
 }
 
-module.exports = { getAllCamps, addNewCamp }
+async function findCamp(req, res) {
+    try {
+        // find camp with id
+        const camp = await Camp.findById(req.params.id);
+        // render show template
+        res.render('showOneCamp', { camp })
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports = { getAllCamps, addNewCamp, findCamp }

@@ -8,7 +8,7 @@ const
 /**
  * Controllers
  */
-const { getAllCamps, addNewCamp } = require('../controllers/camps');
+const { getAllCamps, addNewCamp, findCamp } = require('../controllers/camps');
 
 /**
 * Routes
@@ -19,6 +19,11 @@ router.route('/')
 
 router.route('/new')
     .get((req, res) => {
-        res.render('addNewCamp')
-    })
+        res.render('newCampForm')
+    });
+
+router.route('/:id')
+    .get(findCamp)
+
+
 module.exports = router
