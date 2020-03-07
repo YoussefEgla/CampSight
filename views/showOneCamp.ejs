@@ -5,12 +5,19 @@
 <%- include("./partials/navbar") %>
 <div class="container">
     <h1><%= camp.title %></h1>
-    <img src="<%= camp.image %>" <% for(let comment of camp.comments) { %> <div>
-    <p><%= comment.author %> </p>
-    <p><%= comment.text %> </p>
-</div>
-<%}%>
+    <img src="<%= camp.image %>" />
+    <form action="/camps/<%= camp._id %>/comment" method="POST">
+        <input type="text" name="comment[text]">
+        <input type="text" name="comment[author]">
+        <input type="submit" value="Add new Comment">
+    </form>
+    <% for(let comment of camp.comments) { %>
+    <div>
+        <p><%= comment.author %> </p>
+        <p><%= comment.text %> </p>
+    </div>
+    <%}%>
 </div>
 <!-- Footer & Scripts-->
 <%# Footer %>
-<%- include("./partials/footer.ejs") %>
+    <%- include("./partials/footer.ejs") %>

@@ -18,8 +18,8 @@ const
 const server = express();
 
 // seeding database
-const seeds = require('./seeds')
-seeds();
+// const seeds = require('./seeds')
+// seeds();
 /**
  * Database configuration
  */
@@ -60,6 +60,7 @@ server.use('/js/popper', express.static(__dirname + '/node_modules/popper.js/dis
  */
 server.use('/', require('./routes/index'));
 server.use('/camps', require('./routes/camps'));
+server.use('/camps/:id/comment', require('./routes/comments'));
 
 
 /**
