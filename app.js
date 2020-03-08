@@ -20,9 +20,6 @@ const
  */
 const server = express();
 
-// seeding database
-// const seeds = require('./seeds')
-// seeds();
 /**
  * Database configuration
  */

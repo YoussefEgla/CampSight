@@ -10,7 +10,13 @@ const
  * Schema
  */
 const commentSchema = new Schema({
-    author: String,
+    author: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String,
+    },
     text: String,
     rating: Number
 });

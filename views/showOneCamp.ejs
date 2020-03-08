@@ -107,7 +107,7 @@
                 <% for(let comment of camp.comments) { %>
                 <li class="list-group-item d-flex align-items-start justify-content-between">
                     <p><%= comment.text %> </p>
-                    <p class="font-weight-bold"><%= comment.author %></p>
+                    <p class="font-weight-bold"><%= comment.author.username %></p>
                 </li>
                 <%}%>
             </ul>
