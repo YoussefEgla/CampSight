@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light pt-3">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light pt-4 mx-auto animate-navbar">
+  <div class="container  px-5 py-3 mb-5 bg-white rounded">
     <a class="navbar-brand" href="/"><i class="fas fa-route"></i> Campsight</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/camps">Explore</a>
+          <a class="nav-link text-dark" href="/camps">Explore</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/camps/new">Post Yours</a>
+          <a class="nav-link text-dark" href="/camps/new">Post Yours</a>
         </li>
       </ul>
       <form method="POST" action="/camps/lalala" class="form-inline my-2 my-lg-0">
@@ -20,7 +20,7 @@
       </form>
       <ul class="navbar-nav">
         <% if(loggedInUser) { %>
-        <li class=" nav-link">
+        <li class=" nav-link text-dark">
           Hi, <span class="text-capitalize"><%= loggedInUser.username %></span>
         </li>
         <li class="nav-item">
@@ -30,7 +30,7 @@
         <!-- Login Modal -->
         <li class="nav-item">
           <!-- Button trigger modal -->
-          <a href="#" class="nav-link" data-toggle="modal" data-target="#loginForm">Login</a>
+          <a href="#" class="nav-link text-dark" data-toggle="modal" data-target="#loginForm">Login</a>
           <!-- Modal -->
           <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm"
             aria-hidden="true">
@@ -76,7 +76,7 @@
         <!-- Register Modal -->
         <li class="nav-item">
           <!-- Button trigger modal -->
-          <a href="#" class="nav-link" data-toggle="modal" data-target="#registerForm">Register</a>
+          <a href="#" class="nav-link text-dark" data-toggle="modal" data-target="#registerForm">Register</a>
           <!-- Modal -->
           <div class="modal fade" id="registerForm" tabindex="-1" role="dialog" aria-labelledby="registerForm"
             aria-hidden="true">

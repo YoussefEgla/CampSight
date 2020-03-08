@@ -4,8 +4,8 @@ body {
 
 .banner {
   width: 100%;
-  height: auto;
-  background-position: center;
+  height: 100vh;
+  background-position: 50% 65%;
   background-repeat: no-repeat;
   background-size: cover;
 }
