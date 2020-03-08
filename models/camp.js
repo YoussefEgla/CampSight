@@ -15,8 +15,11 @@ const campSchema = new Schema({
         required: true
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String
     },
     location: String,
     description: String,
