@@ -67,4 +67,14 @@ async function findAndEditCamp(req, res, next) {
     }
 }
 
-module.exports = { getAllCamps, addNewCamp, findOneCamp, findCampForEdit, findAndEditCamp }
+async function deleteCamp(req, res, next) {
+    try {
+        await Camp.findByIdAndRemove(req.params.id);
+    } catch (err) {
+        console.log(err);
+    } finally {
+        return res.redirect('/camps')
+    }
+}
+
+module.exports = { getAllCamps, addNewCamp, findOneCamp, findCampForEdit, findAndEditCamp, deleteCamp }

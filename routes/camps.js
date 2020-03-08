@@ -13,7 +13,8 @@ const {
     addNewCamp,
     findOneCamp,
     findCampForEdit,
-    findAndEditCamp } = require('../controllers/camps');
+    findAndEditCamp,
+    deleteCamp } = require('../controllers/camps');
 
 /**
  * Middleware
@@ -33,7 +34,8 @@ router.route('/new')
 
 router.route('/:id')
     .get(findOneCamp)
-    .put(findAndEditCamp);
+    .put(findAndEditCamp)
+    .delete(deleteCamp);
 
 router.route('/:id/edit')
     .get(findCampForEdit)
