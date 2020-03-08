@@ -11,6 +11,10 @@ const
 const { getAllCamps, addNewCamp, findOneCamp } = require('../controllers/camps');
 
 /**
+ * Middleware
+ */
+const { usersOnly } = require('../controllers/auth')
+/**
 * Routes
 */
 router.route('/')
@@ -18,7 +22,7 @@ router.route('/')
     .post(addNewCamp)
 
 router.route('/new')
-    .get((req, res) => {
+    .get(usersOnly, (req, res) => {
         res.render('newCampForm')
     });
 
