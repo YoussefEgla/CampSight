@@ -8,6 +8,7 @@ const
   createError = require('http-errors'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
   mongoose = require('mongoose'),
   express = require('express'),
   session = require('express-session'),
@@ -33,7 +34,8 @@ server.use(
   logger('dev'),
   express.json(),
   cookieParser(),
-  bodyParser.urlencoded({ extended: true })
+  bodyParser.urlencoded({ extended: true }),
+  methodOverride('_method')
 );
 
 /**

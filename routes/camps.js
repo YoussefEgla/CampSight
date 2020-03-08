@@ -8,7 +8,12 @@ const
 /**
  * Controllers
  */
-const { getAllCamps, addNewCamp, findOneCamp } = require('../controllers/camps');
+const {
+    getAllCamps,
+    addNewCamp,
+    findOneCamp,
+    findCampForEdit,
+    findAndEditCamp } = require('../controllers/camps');
 
 /**
  * Middleware
@@ -28,6 +33,10 @@ router.route('/new')
 
 router.route('/:id')
     .get(findOneCamp)
+    .put(findAndEditCamp);
+
+router.route('/:id/edit')
+    .get(findCampForEdit)
 
 
 module.exports = router
