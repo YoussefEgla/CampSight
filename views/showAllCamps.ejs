@@ -1,15 +1,27 @@
 <%- include("./partials/head") %> <%- include('./partials/navbar') %>
 
 <section class="container my-5">
-  <h1 class="text-center">All Camp Sights</h1>
-  <div class="row justify-content-between ">
+  <h1 class="text-center mb-5">All Camp Sights</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+
+
     <% for(let camp of camps) { %>
-    <div class="col-sm-6 col-md-4 camp-grid d-flex justify-content-center align-items-end mx-n5 my-5"
-      style="background-image: url(<%= camp.image %>)">
-      <h3 class="text-white mb-3"><%= camp.title %></h3>
-      <a href="/camps/<%= camp._id %>" class="btn btn-light">explore</a>
+    <div class="col">
+      <a href="/camps/<%= camp._id %>">
+        <div class="w-100 camp-img" style="background-image: url(<%= camp.image %>);"></div>
+      </a>
+      <div class=" card-body border">
+        <h5 class="display-5 text-dark"><a href="/camps/<%= camp._id %>" class="text-reset"><%= camp.title %></a></h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="card-text mt-2"><i class="fas fa-map-marker-alt text-muted " style="font-size: 1.5rem;"></i>
+            <%= camp.city %></p>
+          <a href="/camps/<%= camp._id %>" class="btn btn-outline-primary px-5">Explore</a>
+        </div>
+      </div>
     </div>
     <%}%>
+
+
   </div>
 </section>
 
