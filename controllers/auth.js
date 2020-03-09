@@ -2,6 +2,7 @@
  * Required Modules
  */
 const User = require('../models/User'),
+    Camp = require('../models/Camp'),
     passport = require('passport');
 
 async function registerUser(req, res, next) {
@@ -27,4 +28,17 @@ async function usersOnly(req, res, next) {
     res.redirect('/')
 }
 
-module.exports = { registerUser, usersOnly }
+async function authorOnly(req, res, next) {
+    await Camp.findById(req.params.id).then(foundCamp => {
+
+        if (foundCamp.author.id.equals(req.user._id)) {
+            res.locals.isCampAuthor = true;
+            next();
+        } else {
+            res.locals.isCampAuthor = false;
+            res.redirect(`/camps/${req.params.id}`)
+        }
+    })
+}
+
+module.exports = { registerUser, usersOnly, authorOnly }

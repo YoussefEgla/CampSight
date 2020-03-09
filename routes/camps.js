@@ -19,7 +19,7 @@ const {
 /**
  * Middleware
  */
-const { usersOnly } = require('../controllers/auth')
+const { usersOnly, authorOnly } = require('../controllers/auth')
 /**
 * Routes
 */
@@ -34,11 +34,11 @@ router.route('/new')
 
 router.route('/:id')
     .get(findOneCamp)
-    .put(findAndEditCamp)
-    .delete(deleteCamp);
+    .put(usersOnly, findAndEditCamp)
+    .delete(usersOnly, authorOnly, deleteCamp);
 
 router.route('/:id/edit')
-    .get(findCampForEdit)
+    .get(usersOnly, authorOnly, findCampForEdit)
 
 
 module.exports = router

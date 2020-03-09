@@ -32,6 +32,7 @@ async function addNewCamp(req, res) {
 
 async function findOneCamp(req, res) {
     try {
+        console.log(req.user)
         // find camp with id
         await Camp.findById(req.params.id
         ).populate('comments'
@@ -69,7 +70,7 @@ async function findAndEditCamp(req, res, next) {
 
 async function deleteCamp(req, res, next) {
     try {
-        await Camp.findByIdAndRemove(req.params.id);
+        await Camp.findOneAndDelete(req.params)
     } catch (err) {
         console.log(err);
     } finally {
