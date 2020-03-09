@@ -78,13 +78,14 @@
                         nesciunt laborum eiusmod.</p>
                     <div class="d-flex justify-content-between">
                         <p class="font-weight-bold">Price $79 / person</p>
+                        <% if(loggedInUser && camp.author.id.equals(loggedInUser._id)) { %>
                         <div>
                             <a href="/camps/<%= camp._id %>/edit" class="btn btn-outline-warning btn-sm">Edit</a>
                             <form action="/camps/<%=camp._id%>?_method=DELETE" method="POST" class="d-inline">
                                 <button class="btn btn-outline-danger btn-sm">Delete</button>
                             </form>
                         </div>
-
+                        <% } %>
                     </div>
                 </div>
             </div>
